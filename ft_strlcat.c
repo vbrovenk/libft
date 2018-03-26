@@ -17,7 +17,7 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 	unsigned int i;
 	unsigned int len;
 	unsigned int src_len;
-	
+
 	i = 0;
 	len = ft_strlen(dst);
 	src_len = ft_strlen(src);
@@ -28,8 +28,8 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 		len++;
 	}
 	dst[i + len] = '\0';
-	if ((len + src_len) < size)
-		return(len);
+	if ((len + src_len) < dstsize)
+		return (len);
 	else
-		return (size);
+		return (dstsize);
 }
