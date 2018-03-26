@@ -17,21 +17,19 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 	unsigned int i;
 	unsigned int len;
 	unsigned int src_len;
-	unsigned int res;
-
+	
 	i = 0;
-	len = 0;
-	src_len = 0;
-	while (dst[len])
-		len++;
-	while (src[src_len])
-		src_len++;
-	res = src_len + len;
-	while (len < (dstsize - 1) && src[i])
+	len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	while (i + len < (dstsize - 1) && src[i])
 	{
 		dst[len] = src[i];
 		i++;
 		len++;
 	}
-	return (res);
+	dst[i + len] = '\0';
+	if ((len + src_len) < size)
+		return(len);
+	else
+		return (size);
 }
