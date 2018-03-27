@@ -22,22 +22,21 @@ static int	is_whitespace(char c)
 
 char		*ft_strtrim(char const *s)
 {
-	size_t	i;
 	size_t	start;
 	size_t	end;
 	char	*str;
 
-	start = 0;
-	end = ft_strlen(s) - 1;
-	if (!(str = ft_strnew(ft_strlen(s))))
+	if (s == NULL)
 		return (NULL);
-	while (s[start] && is_whitespace(s[start]))
+	start = 0;
+	while (is_whitespace(s[start]))
 		start++;
-	while (is_whitespace(s[end]))
+	end = ft_strlen(s) - 1;
+	while (end > start && is_whitespace(s[end]))
 		end--;
 	i = 0;
-	while (start <= end)
-		str[i++] = s[start++];
-	str[i] = '\0';
-	return (str);
+	if (end < start)
+		return (res = ft_strdup(""));
+	res = ft_strsub(s, start, end - start + 1);
+	return (res);
 }

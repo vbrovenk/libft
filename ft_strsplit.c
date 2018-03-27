@@ -36,35 +36,40 @@ static int		count_words(const char *s, char c)
 	return (words);
 }
 
+static int		length_word(const char *s, char c, size_t i)
+{
+	size_t len;
+
+	len = 0;
+	while (s[i] != c && s[i])
+	{
+		len++;
+		i++;
+	}
+	return (len);
+}
+
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**res;
 	size_t	i;
-	int		words;
-	int		len;
-	int		j;
-	int		k;
+	size_t	j;
 
-	k = 0;
 	j = 0;
 	i = 0;
-	words = count_words(s, c);
-	if (!(res = (char **)malloc(sizeof(char*) * (words + 1))))
+	if (!(res = (char **)malloc(sizeof(char*) * (count_words(s, c) + 1))))
 		return (NULL);
-	while (s[i] && j < words)
+	while (s[i])
 	{
-		len = 0;
-		while (s[i] == c)
-			i++;
-		k = i;
-		while (s[i] != c && s[i])
+		if (s[i] != c)
 		{
-			len++;
-			i++;
+			if (!(res[j] = ft_strsub(s, i, length_word(s, c, i))))
+				return (NULL);
+			i += length_word(s, c, i);
+			j++;
 		}
-		res[j] = ft_strnew(len);
-		ft_strncpy(res[j], &s[k], len);
-		j++;
+		else
+			i++;
 	}
 	res[j] = 0;
 	return (res);
