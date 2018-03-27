@@ -43,21 +43,29 @@ char			**ft_strsplit(char const *s, char c)
 	int		words;
 	int		len;
 	int		j;
+	int		k;
 
+	k = 0;
 	j = 0;
 	i = 0;
 	words = count_words(s, c);
-	*res = malloc(sizeof(char*) * (words + 1));
+	if (!(res = (char **)malloc(sizeof(char*) * (words + 1))))
+		return (NULL);
 	while (s[i] && j < words)
 	{
 		len = 0;
 		while (s[i] == c)
 			i++;
+		k = i;
 		while (s[i] != c && s[i])
+		{
 			len++;
+			i++;
+		}
 		res[j] = ft_strnew(len);
-		ft_strncpy(res[j], &s[i], len);
+		ft_strncpy(res[j], &s[k], len);
 		j++;
 	}
+	res[j] = 0;
 	return (res);
 }

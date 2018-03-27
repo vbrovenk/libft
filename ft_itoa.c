@@ -1,43 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrovenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/26 11:10:05 by vbrovenk          #+#    #+#             */
-/*   Updated: 2018/03/26 11:10:07 by vbrovenk         ###   ########.fr       */
+/*   Created: 2018/03/27 08:15:07 by vbrovenk          #+#    #+#             */
+/*   Updated: 2018/03/27 08:15:09 by vbrovenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static int	is_whitespace(char c)
+static int	ft_size(int n)
 {
-	if (c == ' ' || c == '\n' || c == '\t')
-		return (1);
-	else
-		return (0);
+	int	i;
+
+	i = 1;
+	while (n)
+	{
+		i++;
+		n /= 10;
+	}
+	return (i);
 }
 
-char		*ft_strtrim(char const *s)
+char		*ft_itoa(int n)
 {
-	size_t	i;
-	size_t	start;
-	size_t	end;
 	char	*str;
+	int		len;
+	int		flag;
 
-	start = 0;
-	end = ft_strlen(s) - 1;
-	if (!(str = ft_strnew(ft_strlen(s))))
+	flag = 0;
+	len = ft_size(n);
+	if (!(str = ft_strnew(len)))
 		return (NULL);
-	while (s[start] && is_whitespace(s[start]))
-		start++;
-	while (is_whitespace(s[end]))
-		end--;
-	i = 0;
-	while (start <= end)
-		str[i++] = s[start++];
-	str[i] = '\0';
+	if (n < 0)
+	{
+		str[0] = '-';
+		n *= -1;
+		flag = 1;
+	}
+	while (n)
+	{
+		if (flag)
+			str[len - 1] = (n % 10 + '0');
+		else
+			str[len - 2] = (n % 10 + '0');
+		n /= 10;
+		len--;
+	}
 	return (str);
 }
