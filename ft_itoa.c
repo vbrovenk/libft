@@ -11,13 +11,16 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	ft_size(int n)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		i = 1;
 	while (n)
 	{
 		i++;
@@ -26,27 +29,43 @@ static int	ft_size(int n)
 	return (i);
 }
 
+static void	ft_put(char *s, int n, int len)
+{
+	int i;
+	int end;
+
+	i = len;
+	if (n < 0)
+	{
+		s[0] = '-';
+		n *= -1;
+		end = 1;
+	}
+	else
+		end = 0;
+	len -= 1;
+	while (len >= end)
+	{
+		s[len] = n % 10 + '0';
+		n /= 10;
+		len--;
+	}
+	s[i] = '\0';
+}
+
 char		*ft_itoa(int n)
 {
 	char	*str;
 	int		len;
-	int		flag;
 
-	flag = 0;
 	len = ft_size(n);
 	if (!(str = ft_strnew(len)))
 		return (NULL);
-	if (n < 0)
+	if (n == (-2147483648))
 	{
-		str[0] = '-';
-		n *= -1;
-		flag = 1;
+		ft_strcpy(str, "-2147483648");
+		return (str);
 	}
-	while (n)
-	{
-		str[len - 1] = n % 10 + '0';
-		n /= 10;
-		len--;
-	}
+	ft_put(str, n, len);
 	return (str);
 }

@@ -63,7 +63,13 @@ SRC =	ft_memset.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
-		ft_putnbr_fd.c
+		ft_putnbr_fd.c \
+		ft_lstnew.c \
+		ft_lstdelone.c \
+		ft_lstdel.c \
+		ft_lstadd.c \
+		ft_lstiter.c \
+		ft_lstmap.c
 
 
 OBJ = *.o

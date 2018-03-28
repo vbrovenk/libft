@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrovenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/26 11:10:05 by vbrovenk          #+#    #+#             */
-/*   Updated: 2018/03/26 11:10:07 by vbrovenk         ###   ########.fr       */
+/*   Created: 2018/03/28 08:29:57 by vbrovenk          #+#    #+#             */
+/*   Updated: 2018/03/28 08:29:59 by vbrovenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_whitespace(char c)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	if (c == ' ' || c == '\n' || c == '\t')
-		return (1);
-	else
-		return (0);
-}
+	t_list *elem;
 
-char		*ft_strtrim(char const *s)
-{
-	size_t	start;
-	size_t	end;
-	char	*res;
-
-	if (s == NULL)
+	if (!(elem = malloc(sizeof(t_list))))
 		return (NULL);
-	start = 0;
-	while (is_whitespace(s[start]))
-		start++;
-	end = ft_strlen(s) - 1;
-	while (end > start && is_whitespace(s[end]))
-		end--;
-	if (end < start)
-		return (res = ft_strdup(""));
-	res = ft_strsub(s, start, end - start + 1);
-	return (res);
+	elem->content_size = content_size;
+	if (content)
+	{
+		elem->content = ft_strsub(content, 0, content_size);
+	}
+	else
+	{
+		elem->content = NULL;
+		elem->content_size = 0;
+	}
+	elem->next = NULL;
+	return (elem);
 }

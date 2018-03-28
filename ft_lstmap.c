@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrovenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/23 08:42:27 by vbrovenk          #+#    #+#             */
-/*   Updated: 2018/03/23 08:42:29 by vbrovenk         ###   ########.fr       */
+/*   Created: 2018/03/28 09:08:05 by vbrovenk          #+#    #+#             */
+/*   Updated: 2018/03/28 09:08:06 by vbrovenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	size_t			i;
-	unsigned char	*s_dst;
-	unsigned char	*s_src;
+	t_list *res;
 
-	i = 0;
-	s_dst = (unsigned char *)dst;
-	s_src = (unsigned char *)src;
-	if (s_src < s_dst)
+
+	res = ft_lstnew(lst->content, lst->content_size);
+	while (lst)
 	{
-		while ((int)(--len) >= 0)
-			s_dst[len] = s_src[len];
+		res = f(lst);
+		res = res->next;
+		lst = lst->next;
 	}
-	else
-	{
-		while (i < len)
-		{
-			s_dst[i] = s_src[i];
-			i++;
-		}
-	}
-	return (s_dst);
+	return (res);
 }

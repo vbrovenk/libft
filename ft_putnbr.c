@@ -16,12 +16,12 @@ void	ft_putnbr(int n)
 {
 	if (n == (-2147483648))
 	{
-		ft_putstr("–2147483648");
+		write(1, "-2147483648", 11);
 		return ;
 	}
 	if (n < 0)
 	{
-		n = n * -1;
+		n = -n;
 		ft_putchar('-');
 	}
 	if (n >= 10)

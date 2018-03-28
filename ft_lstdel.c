@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrovenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/23 08:42:27 by vbrovenk          #+#    #+#             */
-/*   Updated: 2018/03/23 08:42:29 by vbrovenk         ###   ########.fr       */
+/*   Created: 2018/03/28 08:53:13 by vbrovenk          #+#    #+#             */
+/*   Updated: 2018/03/28 08:53:14 by vbrovenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	size_t			i;
-	unsigned char	*s_dst;
-	unsigned char	*s_src;
-
-	i = 0;
-	s_dst = (unsigned char *)dst;
-	s_src = (unsigned char *)src;
-	if (s_src < s_dst)
+	if ((*alst)->next)
 	{
-		while ((int)(--len) >= 0)
-			s_dst[len] = s_src[len];
+		ft_lstdel(&(*alst)->next, del);
 	}
-	else
-	{
-		while (i < len)
-		{
-			s_dst[i] = s_src[i];
-			i++;
-		}
-	}
-	return (s_dst);
+	ft_lstdelone(alst, del);
 }
