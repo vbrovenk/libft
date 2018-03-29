@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrovenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/26 10:19:47 by vbrovenk          #+#    #+#             */
-/*   Updated: 2018/03/26 10:19:48 by vbrovenk         ###   ########.fr       */
+/*   Created: 2018/03/29 14:52:58 by vbrovenk          #+#    #+#             */
+/*   Updated: 2018/03/29 14:53:00 by vbrovenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strequ(char const *s1, char const *s2)
+int	ft_isspace(char c)
 {
-	if (!s1 || !s2)
-		return (0);
-	if (ft_strcmp(s1, s2) == 0)
-		return (1);
-	else
-		return (0);
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || \
+		c == '\r');
 }

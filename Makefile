@@ -69,7 +69,9 @@ SRC =	ft_memset.c \
 		ft_lstdel.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
-		ft_lstmap.c
+		ft_lstmap.c \
+		ft_size.c \
+		ft_isspace.c
 
 
 OBJ = *.o
@@ -79,7 +81,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	gcc -c $(SRC)
+	gcc $(CFLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJ)
 
 clean:

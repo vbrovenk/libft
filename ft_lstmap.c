@@ -14,15 +14,19 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *res;
+	t_list *lst2;
+	t_list *lst2_temp;
 
-
-	res = ft_lstnew(lst->content, lst->content_size);
+	if (!lst || !f)
+		return (NULL);
+	lst2 = f(lst);
+	lst = lst->next;
+	lst2_temp = lst2;
 	while (lst)
 	{
-		res = f(lst);
-		res = res->next;
+		lst2_temp->next = f(lst);
+		lst2_temp = lst2_temp->next;
 		lst = lst->next;
 	}
-	return (res);
+	return (lst2);
 }

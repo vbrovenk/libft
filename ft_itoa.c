@@ -12,23 +12,6 @@
 
 #include "libft.h"
 
-static int	ft_size(int n)
-{
-	int	i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-		i = 1;
-	while (n)
-	{
-		i++;
-		n /= 10;
-	}
-	return (i);
-}
-
 static void	ft_put(char *s, int n, int len)
 {
 	int i;
