@@ -30,5 +30,5 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	}
 	if (i == n)
 		return (NULL);
-	return (s_dst);
+	return ((void *)s_dst);
 }

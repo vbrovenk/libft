@@ -6,7 +6,7 @@
 /*   By: vbrovenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 07:26:13 by vbrovenk          #+#    #+#             */
-/*   Updated: 2018/03/28 13:09:43 by vbrovenk         ###   ########.fr       */
+/*   Updated: 2018/03/31 13:38:15 by vbrovenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,10 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-int					ft_size(int n);
+int					ft_countdigits(int n);
 int					ft_isspace(char c);
-int 				ft_list_size(t_list *begin_list);
-int 				ft_isprime(int num);
+int					ft_list_size(t_list *begin_list);
+int					ft_isprime(int num);
+void				ft_lstadd_back(t_list **alst, t_list *new);
 
 #endif

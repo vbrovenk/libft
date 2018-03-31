@@ -70,8 +70,11 @@ SRC =	ft_memset.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
-		ft_size.c \
-		ft_isspace.c
+		ft_countdigits.c \
+		ft_isspace.c \
+		ft_list_size.c \
+		ft_isprime.c \
+		ft_lstadd_back.c
 
 
 OBJ = *.o

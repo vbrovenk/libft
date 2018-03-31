@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_countdigits.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrovenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/22 12:14:14 by vbrovenk          #+#    #+#             */
-/*   Updated: 2018/03/22 12:14:16 by vbrovenk         ###   ########.fr       */
+/*   Created: 2018/03/29 14:41:18 by vbrovenk          #+#    #+#             */
+/*   Updated: 2018/03/29 14:41:22 by vbrovenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isalnum(int c)
+int	ft_countdigits(int n)
 {
-	if (ft_isdigit(c) || ft_isalpha(c))
+	int	i;
+
+	i = 0;
+	if (n == 0)
 		return (1);
-	else
-		return (0);
+	if (n < 0)
+		i = 1;
+	while (n)
+	{
+		i++;
+		n /= 10;
+	}
+	return (i);
 }

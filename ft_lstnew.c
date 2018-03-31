@@ -22,6 +22,11 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	if (content)
 	{
 		elem->content = ft_strsub(content, 0, content_size);
+		if (!elem->content)
+		{
+			free(elem);
+			return (NULL);
+		}
 	}
 	else
 	{

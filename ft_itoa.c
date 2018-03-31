@@ -41,7 +41,7 @@ char		*ft_itoa(int n)
 	char	*str;
 	int		len;
 
-	len = ft_size(n);
+	len = ft_countdigits(n);
 	if (!(str = ft_strnew(len)))
 		return (NULL);
 	if (n == (-2147483648))
