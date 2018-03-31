@@ -85,5 +85,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_size(int n);
 int					ft_isspace(char c);
+int 				ft_list_size(t_list *begin_list);
+int 				ft_isprime(int num);
 
 #endif
