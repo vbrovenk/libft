@@ -77,20 +77,23 @@ SRC =	ft_memset.c \
 		ft_lstadd_back.c
 
 
-OBJ = *.o
+OBJ = $(SRC:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME):
-	gcc $(CFLAGS) -c $(SRC)
-	ar rc $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@echo "\033[1;32mlibft.a -(OK)- \033[0m" 
+
+%.o: %.c
+	gcc $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf *.o
+	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
