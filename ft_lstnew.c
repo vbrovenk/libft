@@ -22,12 +22,12 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	if (content)
 	{
 		elem->content = malloc(elem->content_size);
-		elem->content = ft_memcpy(elem->content, content, content_size);
 		if (!elem->content)
 		{
 			free(elem);
 			return (NULL);
 		}
+		elem->content = ft_memcpy(elem->content, content, content_size);
 	}
 	else
 	{
