@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrovenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/31 13:49:33 by vbrovenk          #+#    #+#             */
-/*   Updated: 2018/03/31 13:50:01 by vbrovenk         ###   ########.fr       */
+/*   Created: 2018/04/15 13:35:36 by vbrovenk          #+#    #+#             */
+/*   Updated: 2018/04/21 14:36:32 by vbrovenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	ft_lstadd_back(t_list **alst, t_list *new)
+# include "libft.h"
+# define BUFF_SIZE 1
+
+typedef	struct	s_gnl
 {
-	t_list *temp;
+	char		string[BUFF_SIZE + 1];
+	size_t		length;
+}				t_gnl;
 
-	temp = *alst;
-	if (temp == NULL)
-	{
-		*alst = new;
-		return ;
-	}
-	while (temp->next)
-		temp = temp->next;
-	temp->next = new;
-}
+int				get_next_line(const int fd, char **line);
+
+#endif

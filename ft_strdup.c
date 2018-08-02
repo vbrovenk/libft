@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strdup(const char *s1)
 {
@@ -18,6 +19,8 @@ char	*ft_strdup(const char *s1)
 	char	*res;
 	int		len;
 
+	if (s1 == NULL)
+		return (NULL);
 	len = 0;
 	while (s1[len])
 		len++;
