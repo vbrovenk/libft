@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isinteger.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrovenk <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: osamoile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/27 08:53:53 by vbrovenk          #+#    #+#             */
-/*   Updated: 2018/03/27 08:56:35 by vbrovenk         ###   ########.fr       */
+/*   Created: 2018/03/21 18:00:27 by osamoile          #+#    #+#             */
+/*   Updated: 2018/03/21 18:00:28 by osamoile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putstr_fd(char const *s, int fd)
+int		ft_isinteger(char *line)
 {
-	int	i;
+	int		num;
+	char	*itoa;
+	int		res;
 
-	i = 0;
-	if (s)
-	{
-		while (s[i])
-		{
-			write(fd, &s[i], 1);
-			i++;
-		}
-	}
-	return (i);
+	num = ft_atoi(line);
+	itoa = ft_itoa(num);
+	if (ft_strequ(itoa, line))
+		res = 1;
+	else
+		res = 0;
+	ft_strdel(&itoa);
+	return (res);
 }
